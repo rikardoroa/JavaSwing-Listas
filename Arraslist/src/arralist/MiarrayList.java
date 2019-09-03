@@ -97,7 +97,7 @@ public class MiarrayList {
 			     }
 			} catch(IllegalArgumentException I) {
 				
-				JOptionPane.showMessageDialog(null,"inserte Datos en la lista A para ser copiados En la lista B, ya que no puede haber listas vacias");
+				JOptionPane.showMessageDialog(null,"Inserte Datos en la lista A para ser copiados En la lista B, ya que no puede haber listas vacias","ERROR",0);
 			}
 			}
 		});
@@ -148,6 +148,12 @@ public class MiarrayList {
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDoubleClick(MouseEvent e) {
+				
+				
+			if (text_1.getText().isEmpty()||text_2.getText().isEmpty()||text_3.getText().isEmpty()||text_4.getText().isEmpty()|| text.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null,"Los Campos no pueden quedar vacios","ERROR",0);
+			}else {
+				
 				elemento1=text_1.getText();
 				elemento2=text_2.getText();
 				elemento3=text_3.getText();
@@ -160,6 +166,7 @@ public class MiarrayList {
 				list.add(elemento4);
 				list.add(elemento5);
 			}
+			}
 		});
 		btnGuardar.setBounds(44, 318, 75, 25);
 		btnGuardar.setText("Guardar");
@@ -168,11 +175,15 @@ public class MiarrayList {
 		btnLimpiar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDoubleClick(MouseEvent e) {
-				text_1.setText(" ");
-				text_2.setText(" ");
-				text_3.setText(" ");
-				text_4.setText(" ");
-				text.setText(" ");
+			
+				text_1.setText("");
+				text_2.setText("");
+				text_3.setText("");
+				text_4.setText("");
+				text.setText("");
+				
+				JOptionPane.showMessageDialog(null,"Campos Reseteados");
+				
 			}
 		});
 		btnLimpiar.setBounds(139, 318, 75, 25);
@@ -189,6 +200,17 @@ public class MiarrayList {
 		});
 		btnRetornaIndices.setBounds(81, 37, 117, 25);
 		btnRetornaIndices.setText("Retorna Indices");
+		
+		Button btnCerrar = new Button(shlArraylistPowered, SWT.NONE);
+		btnCerrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+				shlArraylistPowered.close();
+			}
+			
+		});
+		btnCerrar.setBounds(830, 10, 75, 25);
+		btnCerrar.setText("Cerrar");
 
 	}
 }
